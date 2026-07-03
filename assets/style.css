@@ -256,6 +256,54 @@ nav.menu details .drop-menu a:hover{background:#f3f6fc;color:var(--cta)}
 .mini-reviews{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 @media(max-width:680px){.mini-reviews{grid-template-columns:1fr}}
 
+/* Exam-pattern / eligibility comparison boxes (Class VI vs Class IX etc.) */
+.exam-compare{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.exam-box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+.exam-box .ebtag{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;font-size:.7rem;font-weight:800;padding:4px 12px;border-radius:50px;margin-bottom:10px}
+.exam-box h4{color:var(--navy);font-size:1.12rem;margin-bottom:4px}
+.exam-box .exam-sub{color:var(--muted);font-size:.84rem;margin-bottom:14px}
+.exam-box table{width:100%;border-collapse:collapse;font-size:.88rem}
+.exam-box table th{text-align:left;color:var(--navy);font-weight:800;padding:8px 6px;border-bottom:2px solid var(--line)}
+.exam-box table td{padding:8px 6px;border-bottom:1px solid var(--line);color:var(--text)}
+.exam-box table tr:last-child td{border-bottom:none;font-weight:800;color:var(--cta)}
+.exam-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.exam-meta span{background:#eef3fb;color:var(--navy);font-size:.74rem;font-weight:700;padding:5px 12px;border-radius:50px}
+@media(max-width:680px){.exam-compare{grid-template-columns:1fr}}
+
+/* Daily routine strip */
+.routine-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.rtime{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 10px;text-align:center;box-shadow:var(--shadow)}
+.rtime .rt-time{color:var(--cta);font-weight:800;font-size:.8rem;font-family:'Teko',sans-serif;letter-spacing:.4px}
+.rtime .rt-act{color:var(--navy);font-size:.78rem;font-weight:600;margin-top:4px}
+@media(max-width:900px){.routine-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.routine-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Documents checklist columns */
+.doc-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.doc-box{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.doc-box h4{color:var(--navy);margin-bottom:12px;font-size:1.02rem}
+.doc-box ul{list-style:none;display:grid;gap:9px}
+.doc-box li{display:flex;gap:8px;align-items:flex-start;font-size:.88rem;color:var(--text)}
+.doc-box li::before{content:"✔";color:var(--green);font-weight:800;flex-shrink:0}
+@media(max-width:680px){.doc-cols{grid-template-columns:1fr}}
+
+/* Reservation / info pill grid */
+.resv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.resv-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;box-shadow:var(--shadow)}
+.resv-card .rn{font-family:'Teko',sans-serif;font-size:1.7rem;font-weight:700;color:var(--cta)}
+.resv-card .rl{font-size:.8rem;color:var(--muted);font-weight:600;margin-top:2px}
+
+/* Important-points note banner */
+.note-banner{background:linear-gradient(135deg,#eef3fb,#f6f1e2);border:1.5px dashed var(--gold);border-radius:18px;padding:26px 28px}
+.note-banner h4{color:var(--navy);font-size:1.05rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.note-banner ul{list-style:none;display:grid;gap:8px}
+.note-banner li{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;color:var(--text)}
+.note-banner li::before{content:"📌";flex-shrink:0}
+
+/* Career / facility chip row */
+.chip-row{display:flex;flex-wrap:wrap;gap:10px}
+.chip-row span{background:#eef3fb;color:var(--navy);font-weight:600;font-size:.85rem;padding:8px 16px;border-radius:50px;border:1px solid var(--line)}
+
 /* Contact Us section */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;margin-top:8px}
 .contact-info{display:flex;flex-direction:column;gap:16px}
