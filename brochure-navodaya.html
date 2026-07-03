@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Navodaya Vidyalaya (JNVST & LEST) — Infographic Brochure | LBK Cadets Pathshala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Teko:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#123d2a; --navy2:#1a5138;
+    --gold:#cba24c; --gold2:#a67d2c;
+    --cta:#ff6a13; --cta2:#ff3b2f;
+    --saffron:#ff9933; --india-green:#138808; --chakra:#0a3d91;
+    --bg:#f3f6fc; --text:#15203a; --muted:#5c6883; --line:#e6ebf3;
+    --shadow:0 10px 26px rgba(10,28,56,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.5}
+  .page{width:210mm;min-height:297mm;margin:16px auto;background:#fff;box-shadow:var(--shadow);padding:14mm 12mm;position:relative;overflow:hidden}
+  .tricolor{height:5px;background:linear-gradient(90deg,var(--saffron) 0 33.3%,#fff 33.3% 66.6%,var(--india-green) 66.6% 100%);border-radius:3px;margin-bottom:12px}
+
+  /* Header */
+  .bhead{display:flex;align-items:center;gap:16px;border-bottom:3px solid var(--gold);padding-bottom:14px;margin-bottom:16px}
+  .logo-slot{width:78px;height:92px;flex-shrink:0;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,var(--navy),var(--navy2));border:2px solid var(--gold)}
+  .logo-slot img{width:100%;height:100%;object-fit:contain}
+  .logo-slot .ph{color:var(--gold);font-size:.6rem;text-align:center;font-weight:700;padding:4px}
+  .btitle b{display:block;color:var(--navy);font-family:'Teko',sans-serif;font-size:1.9rem;font-weight:700;line-height:1.05}
+  .btitle span{display:block;color:var(--gold2);font-weight:700;font-size:.82rem;letter-spacing:.4px}
+  .btitle small{display:block;color:var(--muted);font-size:.74rem;margin-top:2px}
+  .bhead .contact-mini{margin-left:auto;text-align:right;font-size:.72rem;color:var(--muted);line-height:1.5}
+  .bhead .contact-mini b{color:var(--navy)}
+
+  /* Hero strip */
+  .hero-strip{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}
+  .hero-strip h1{font-family:'Teko',sans-serif;font-size:1.55rem;font-weight:700;line-height:1.1}
+  .hero-strip h1 em{color:var(--gold);font-style:normal}
+  .hero-strip p{font-size:.78rem;color:#d6e4da;margin-top:4px;max-width:420px}
+  .hero-cta{background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;font-weight:800;font-size:.78rem;padding:10px 18px;border-radius:50px;white-space:nowrap;box-shadow:0 6px 14px rgba(255,80,30,.4)}
+
+  /* Stat strip */
+  .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+  .stat-box{background:#f6f1e2;border:1px solid var(--gold);border-radius:10px;text-align:center;padding:9px 4px}
+  .stat-box .sn{font-family:'Teko',sans-serif;font-weight:700;color:var(--navy);font-size:1.15rem;line-height:1}
+  .stat-box .sl{font-size:.62rem;color:var(--muted);font-weight:700;margin-top:2px}
+
+  .sec-title{display:flex;align-items:center;gap:8px;margin:14px 0 8px}
+  .sec-title .num{width:22px;height:22px;border-radius:50%;background:var(--cta);color:#fff;font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .sec-title h2{color:var(--navy);font-size:.96rem;font-weight:800;text-transform:uppercase;letter-spacing:.3px}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;box-shadow:var(--shadow)}
+  .box h4{color:var(--navy);font-size:.82rem;font-weight:800;margin-bottom:4px}
+  .box .tag{display:inline-block;background:var(--gold);color:#fff;font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:20px;margin-bottom:4px}
+  .box .sub{font-size:.68rem;color:var(--muted);margin-bottom:6px}
+  .box table{width:100%;border-collapse:collapse;font-size:.7rem}
+  .box table th{text-align:left;color:var(--navy);font-weight:800;padding:3px 4px;border-bottom:1.5px solid var(--line)}
+  .box table td{padding:3px 4px;border-bottom:1px solid var(--line)}
+  .box table tr:last-child td{border-bottom:none;font-weight:800;color:var(--cta)}
+  .meta-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+  .meta-pills span{background:#eef3fb;color:var(--navy);font-size:.6rem;font-weight:700;padding:3px 8px;border-radius:20px}
+
+  .chip-row{display:flex;flex-wrap:wrap;gap:5px}
+  .chip-row span{background:#eef3fb;color:var(--navy);font-weight:700;font-size:.66rem;padding:5px 10px;border-radius:20px;border:1px solid var(--line)}
+
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .mini-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px;text-align:center;box-shadow:var(--shadow)}
+  .mini-card .mi{font-size:1.1rem;line-height:1}
+  .mini-card .mt{color:var(--navy);font-size:.7rem;font-weight:800;margin-top:3px}
+  .mini-card .md{color:var(--muted);font-size:.6rem;margin-top:2px}
+
+  .routine-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .rt{background:#f6f1e2;border:1px solid var(--gold);border-radius:8px;text-align:center;padding:6px 2px}
+  .rt b{display:block;color:var(--navy);font-family:'Teko',sans-serif;font-size:.78rem}
+  .rt span{display:block;color:var(--muted);font-size:.58rem;font-weight:700}
+
+  .resv-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .resv{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:8px;text-align:center;padding:8px 4px}
+  .resv b{display:block;font-family:'Teko',sans-serif;font-size:1rem;color:var(--gold)}
+  .resv span{display:block;font-size:.58rem;font-weight:700;margin-top:2px}
+
+  .doc-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .doc-box ul{list-style:none;font-size:.68rem;display:grid;gap:3px}
+  .doc-box li{padding-left:14px;position:relative}
+  .doc-box li::before{content:"✔";position:absolute;left:0;color:var(--india-green);font-weight:800;font-size:.65rem}
+
+  .note-band{background:linear-gradient(135deg,#f6f1e2,#eef3fb);border:1.5px dashed var(--gold);border-radius:10px;padding:10px 14px}
+  .note-band ul{list-style:none;font-size:.68rem;display:grid;gap:4px}
+  .note-band li{padding-left:16px;position:relative}
+  .note-band li::before{content:"📌";position:absolute;left:0;font-size:.65rem}
+
+  .cta-band{background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:14px}
+  .cta-band h3{font-family:'Teko',sans-serif;font-size:1.3rem;font-weight:700}
+  .cta-band p{font-size:.7rem;color:#ffe9dc;margin-top:2px}
+  .cta-band .btn2{background:#fff;color:var(--cta);font-weight:800;font-size:.72rem;padding:8px 16px;border-radius:20px;white-space:nowrap}
+
+  .bfoot{margin-top:14px;border-top:3px solid var(--gold);padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:.68rem;color:var(--muted)}
+  .bfoot b{color:var(--navy)}
+  .motto{text-align:center;color:var(--gold2);font-weight:800;font-size:.72rem;margin-top:4px;letter-spacing:.3px}
+
+  .print-toolbar{max-width:210mm;margin:10px auto;text-align:center}
+  .print-toolbar button{background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;border:none;font-weight:800;padding:10px 24px;border-radius:30px;font-size:.9rem;cursor:pointer;box-shadow:0 8px 20px rgba(255,80,30,.4)}
+
+  @media print{
+    body{background:#fff}
+    .print-toolbar{display:none}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto}
+    @page{size:A4;margin:8mm}
+  }
+  @media (max-width:900px){
+    .page{width:100%;padding:6mm}
+    .two-col,.grid4,.doc-cols{grid-template-columns:1fr 1fr}
+    .routine-row,.resv-row{grid-template-columns:repeat(3,1fr)}
+    .bhead .contact-mini{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="print-toolbar">
+  <button onclick="window.print()">🖨️ Print / Save as PDF</button>
+</div>
+
+<div class="page">
+  <div class="tricolor"></div>
+
+  <!-- HEADER -->
+  <div class="bhead">
+    <div class="logo-slot">
+      <!-- Replace with: <img src="assets/logo.png" alt="LBK Cadets Pathshala Logo" /> -->
+      <img src="assets/logo.png" alt="LBK Cadets Pathshala Logo" onerror="this.style.display='none';this.parentElement.querySelector('.ph').style.display='block'" />
+      <div class="ph" style="display:none">LBK<br/>LOGO<br/>HERE</div>
+    </div>
+    <div class="btitle">
+      <b>LBK Cadets Pathshala</b>
+      <span>ज्ञानम् · अनुशासनम् · राष्ट्रसेवा</span>
+      <small>Defence &amp; School Entrance Coaching · Aligarh · Est. 2011</small>
+    </div>
+    <div class="contact-mini">
+      📍 Hathras Road, Iglas, Aligarh (U.P.) 202124<br/>
+      📞 <b>+91 88594 25252</b> · +91 75051 02600<br/>
+      📧 lbkcadetspathshala@gmail.com
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero-strip">
+    <div>
+      <h1>Jawahar Navodaya Vidyalaya — <em>JNVST</em> &amp; <em>LEST</em></h1>
+      <p>Class VI (JNVST) &amp; Class IX (Lateral Entry) admission ki complete NVS-pattern guide — eligibility, exam pattern, syllabus, reservation, hostel life aur documents, sab ek jagah.</p>
+    </div>
+    <div class="hero-cta">🎯 Free Counselling: +91 88594 25252</div>
+  </div>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="stat-box"><div class="sn">660+</div><div class="sl">JNVs in India</div></div>
+    <div class="stat-box"><div class="sn">28+8</div><div class="sl">States &amp; UTs</div></div>
+    <div class="stat-box"><div class="sn">100%</div><div class="sl">Free Residential Education</div></div>
+    <div class="stat-box"><div class="sn">CBSE</div><div class="sl">Affiliated Board</div></div>
+  </div>
+
+  <!-- 1. AGE ELIGIBILITY -->
+  <div class="sec-title"><div class="num">1</div><h2>Age Eligibility — JNVST 2027-28</h2></div>
+  <div class="two-col">
+    <div class="box">
+      <span class="tag">MAIN ENTRY</span>
+      <h4>Class VI — JNVST</h4>
+      <div class="sub">DOB: 1 May 2015 – 31 July 2017 (inclusive)</div>
+      <div class="meta-pills">
+        <span>📚 Currently Class V</span>
+        <span>🏫 Same district school</span>
+        <span>🏛️ Govt/recognized</span>
+      </div>
+    </div>
+    <div class="box">
+      <span class="tag">LATERAL ENTRY</span>
+      <h4>Class IX — LEST</h4>
+      <div class="sub">DOB: 1 May 2012 – 31 July 2014 (inclusive)</div>
+      <div class="meta-pills">
+        <span>📚 Currently Class VIII</span>
+        <span>🎫 Subject to vacancy</span>
+        <span>🏛️ Recognized school</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. EXAM PATTERN -->
+  <div class="sec-title"><div class="num">2</div><h2>Exam Pattern — No Negative Marking, All MCQ</h2></div>
+  <div class="two-col">
+    <div class="box">
+      <h4>Class VI — JNVST (2 Hours)</h4>
+      <table>
+        <tr><th>Section</th><th>Qs</th><th>Marks</th></tr>
+        <tr><td>Mental Ability</td><td>40</td><td>50</td></tr>
+        <tr><td>Arithmetic</td><td>20</td><td>25</td></tr>
+        <tr><td>Language</td><td>20</td><td>25</td></tr>
+        <tr><td>Total</td><td>80</td><td>100</td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h4>Class IX — LEST (2½ Hours)</h4>
+      <table>
+        <tr><th>Subject</th><th>Marks</th></tr>
+        <tr><td>English</td><td>15</td></tr>
+        <tr><td>Hindi</td><td>15</td></tr>
+        <tr><td>Mathematics</td><td>35</td></tr>
+        <tr><td>Science</td><td>35</td></tr>
+        <tr><td>Total</td><td>100</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3. ADMISSION PROCESS -->
+  <div class="sec-title"><div class="num">3</div><h2>Admission Process</h2></div>
+  <div class="grid4">
+    <div class="mini-card"><div class="mi">📝</div><div class="mt">Apply Online</div><div class="md">NVS official site par form</div></div>
+    <div class="mini-card"><div class="mi">✅</div><div class="mt">Verification</div><div class="md">Age &amp; eligibility check</div></div>
+    <div class="mini-card"><div class="mi">🎫</div><div class="mt">Admit Card + Exam</div><div class="md">JNVST/LEST attempt</div></div>
+    <div class="mini-card"><div class="mi">🏆</div><div class="mt">Result + Medical</div><div class="md">Docs &amp; fitness check</div></div>
+  </div>
+
+  <!-- 4. RESERVATION -->
+  <div class="sec-title"><div class="num">4</div><h2>Reservation (As Per NVS Rules)</h2></div>
+  <div class="resv-row">
+    <div class="resv"><b>75%</b><span>Rural (min.)</span></div>
+    <div class="resv"><b>27%</b><span>OBC (NCL)</span></div>
+    <div class="resv"><b>1/3</b><span>Girls (min.)</span></div>
+    <div class="resv"><b>SC/ST</b><span>By district pop.</span></div>
+    <div class="resv"><b>♿</b><span>Divyang (PwD)</span></div>
+  </div>
+
+  <!-- 5. HOSTEL + ROUTINE -->
+  <div class="sec-title"><div class="num">5</div><h2>Residential Life — Hostel &amp; Daily Routine</h2></div>
+  <div class="chip-row" style="margin-bottom:8px">
+    <span>🛏️ Separate Hostels</span><span>🍽️ Free Meals</span><span>📚 Library</span>
+    <span>💻 Smart Class</span><span>🔬 Science Labs</span><span>🏟️ Sports Complex</span>
+    <span>🏥 Medical Care</span><span>🕐 24-Hr Supervision</span>
+  </div>
+  <div class="routine-row">
+    <div class="rt"><b>5:30 AM</b><span>Wake Up</span></div>
+    <div class="rt"><b>7:00 AM</b><span>Breakfast</span></div>
+    <div class="rt"><b>8-2 PM</b><span>Classes</span></div>
+    <div class="rt"><b>4:00 PM</b><span>Sports</span></div>
+    <div class="rt"><b>9:00 PM</b><span>Self Study</span></div>
+  </div>
+
+  <!-- 6. FEE + CAREER -->
+  <div class="sec-title"><div class="num">6</div><h2>Fee Structure &amp; Career Pathways</h2></div>
+  <div class="two-col">
+    <div class="box">
+      <h4>🆓 100% Free Education</h4>
+      <div class="sub">Tuition, boarding, lodging, textbooks, uniform, library &amp; medical — all free. Only Class IX-XII general category students pay a nominal Vidyalaya Vikas Nidhi (VVN).</div>
+    </div>
+    <div class="box">
+      <h4>🎯 Career Opportunities</h4>
+      <div class="chip-row">
+        <span>IIT/NIT</span><span>NEET</span><span>UPSC</span><span>NDA</span><span>Law</span><span>Banking</span><span>IT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. DOCUMENTS -->
+  <div class="sec-title"><div class="num">7</div><h2>Documents Required</h2></div>
+  <div class="doc-cols">
+    <div class="box doc-box">
+      <h4>Class VI (JNVST)</h4>
+      <ul>
+        <li>Online Application Form</li>
+        <li>Birth Certificate</li>
+        <li>Residence Certificate</li>
+        <li>Class V Study Certificate</li>
+        <li>Passport Photos</li>
+        <li>Aadhaar Card (if available)</li>
+      </ul>
+    </div>
+    <div class="box doc-box">
+      <h4>Class IX (LEST)</h4>
+      <ul>
+        <li>Class VIII Marksheet</li>
+        <li>Transfer Certificate</li>
+        <li>Birth Certificate</li>
+        <li>Residence Certificate</li>
+        <li>Aadhaar Card</li>
+        <li>Medical Fitness Certificate</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. IMPORTANT POINTS -->
+  <div class="sec-title"><div class="num">8</div><h2>Important Points</h2></div>
+  <div class="note-band">
+    <ul>
+      <li>Admission sirf JNVST (Class VI) &amp; LEST (Class IX) se hoti hai — koi negative marking nahi.</li>
+      <li>Class IX admission vacancy ke subject hai; apply sirf eligible district ke JNV ke liye kiya jaa sakta hai.</li>
+      <li>Selection merit, eligibility, document verification &amp; medical fitness par based hai.</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div>
+      <h3>Free Counselling + Scholarship Test — Session 2027-28</h3>
+      <p>15+ saal ka experience · Expert faculty · Daily tests · WhatsApp par turant sampark karein</p>
+    </div>
+    <div class="btn2">📞 +91 88594 25252</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="bfoot">
+    <span><b>LBK Cadets Pathshala</b> · LBK Campus, Hathras Road, Iglas, Aligarh, U.P. - 202124</span>
+    <span>lbkcadetspathshala@gmail.com</span>
+  </div>
+  <div class="motto">ज्ञानम् · अनुशासनम् · राष्ट्रसेवा</div>
+</div>
+
+</body>
+</html>
