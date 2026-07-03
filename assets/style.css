@@ -40,7 +40,8 @@ section{padding:72px 0}
 .topbar a{color:var(--gold);font-weight:700}
 .topbar .pill{background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff;padding:3px 12px;border-radius:50px;font-weight:700}
 
-header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.site-head{position:sticky;top:0;z-index:55}
+header.nav{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding:9px 0}
 nav.menu{display:flex;align-items:center;gap:22px}
 nav.menu a{color:var(--text);font-weight:600;font-size:.94rem}
