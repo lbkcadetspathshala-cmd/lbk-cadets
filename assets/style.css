@@ -10,7 +10,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;overflow-x:clip}
 h1,h2,h3,h4{line-height:1.12}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
