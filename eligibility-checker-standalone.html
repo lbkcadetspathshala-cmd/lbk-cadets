@@ -113,6 +113,26 @@ nav.menu details .drop-menu a:hover{background:#f3f6fc;color:var(--cta)}
 .disc-box{background:#fff8ec;border:1.5px solid var(--gold);border-radius:14px;padding:16px 20px;margin-top:22px;font-size:.82rem;color:var(--text);line-height:1.6}
 .disc-box b{color:var(--gold2)}
 
+/* Result Popup / Modal */
+.elig-modal-overlay{position:fixed;inset:0;background:rgba(8,30,20,.7);z-index:150;display:none;align-items:center;justify-content:center;padding:18px}
+.elig-modal-overlay.show{display:flex}
+.elig-modal-box{background:#fff;border-radius:22px;max-width:660px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 34px 80px rgba(0,0,0,.4);animation:emPop .32s ease}
+@keyframes emPop{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.em-close{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:grid;place-items:center;z-index:2;transition:background .2s}
+.em-close:hover{background:rgba(255,255,255,.32)}
+.em-head{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:30px 28px 24px;border-radius:22px 22px 0 0;position:relative;overflow:hidden}
+.em-head::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0%,rgba(203,162,76,.28),transparent 60%)}
+.em-head .em-tag{position:relative;z-index:1;color:var(--gold);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;font-size:.72rem;display:inline-block;margin-bottom:8px}
+.em-head h3{position:relative;z-index:1;font-size:clamp(1.15rem,3vw,1.55rem);font-weight:800;line-height:1.35}
+.em-head h3 b{color:var(--gold)}
+.em-chips{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.em-chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.8rem;font-weight:700;padding:6px 13px;border-radius:50px}
+.em-chip.none{background:rgba(255,255,255,.1)}
+.em-body{padding:24px 26px 28px}
+.em-body .elig-grid{margin-bottom:6px}
+.em-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.em-actions .btn{flex:1;min-width:180px}
+
 .ctaband{background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff}
 .ctaband .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .ctaband h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;max-width:640px}
@@ -383,6 +403,13 @@ footer a:hover{color:var(--gold)}
   <a href="index.html#enroll" class="enq">🎯 Enquiry</a>
 </div>
 
+<div class="elig-modal-overlay" id="eligModalOverlay">
+  <div class="elig-modal-box" id="eligModalBox">
+    <button class="em-close" id="eligModalClose" aria-label="Close">✕</button>
+    <div id="eligModalContent"></div>
+  </div>
+</div>
+
 <script>
 /* ===========================================================================
    LBK Cadets Pathshala — Eligibility Checker (ALL-IN-ONE, single file)
@@ -538,11 +565,32 @@ if (form) {
     var order = { now: 0, later: 1, info: 2, passed: 3 };
     matchedCards.sort(function (a, b) { return order[a.status] - order[b.status]; });
 
+    var studentName = name || 'Aapka bacha';
+
+    /* Unique eligible-now course names (dedupe by course, not per entry) */
+    var eligibleNames = [];
+    matchedCards.forEach(function (m) {
+      if (m.status === 'now' && eligibleNames.indexOf(m.course.name) === -1) {
+        eligibleNames.push(m.course.name);
+      }
+    });
+
+    var headHtml = '';
+    headHtml += '<div class="em-head">';
+    headHtml += '<span class="em-tag">✅ Eligibility Result</span>';
+    if (eligibleNames.length > 0) {
+      headHtml += '<h3><b>' + studentName + '</b> is eligible for ' + eligibleNames.length + ' course' + (eligibleNames.length === 1 ? '' : 's') + ' right now! 🎉</h3>';
+      headHtml += '<div class="em-chips">';
+      eligibleNames.forEach(function (n) { headHtml += '<span class="em-chip">✅ ' + n + '</span>'; });
+      headHtml += '</div>';
+    } else {
+      headHtml += '<h3><b>' + studentName + '</b> abhi kisi course ke liye "eligible now" nahi hai — lekin niche detail mein dekhein kaunse courses aage eligible ho sakte hain.</h3>';
+      headHtml += '<div class="em-chips"><span class="em-chip none">⏳ Check detailed status below</span></div>';
+    }
+    headHtml += '</div>';
+
     var html = '';
-    html += '<div class="elig-summary">';
-    html += '<div><b>' + eligibleCount + '</b> <span>course entry point' + (eligibleCount === 1 ? '' : 's') + ' likely match' + (eligibleCount === 1 ? 'es' : '') + ' ' + (name ? name : 'this student') + ' right now</span></div>';
-    html += '<a href="index.html#enroll" class="btn btn-cta">🎯 Book Free Counselling</a>';
-    html += '</div>';
+    html += '<div class="em-body">';
     html += '<div class="elig-grid">';
 
     matchedCards.forEach(function (m) {
@@ -562,8 +610,28 @@ if (form) {
 
     html += '</div>';
     html += '<div class="disc-box">⚠️ <b>Disclaimer:</b> Ye result sirf ek quick guide hai, based on generally published rules. Exact age cut-off dates, reservation percentages aur seat availability har admission cycle mein change hoti hain. Kripya final confirmation ke liye humein call/WhatsApp karein ya official notification dekhein — hamari free counselling team aapko exact eligibility batayegi.</div>';
+    html += '<div class="em-actions">';
+    html += '<a href="index.html#enroll" class="btn btn-cta">🎯 Book Free Counselling</a>';
+    html += '<a href="#" class="btn btn-cta" id="waEligResult" style="background:linear-gradient(135deg,#25d366,#1ea952)"><svg class="wa-icon"><use href="#waIcon"/></svg> WhatsApp Result</a>';
+    html += '</div>';
+    html += '</div>';
 
-    resultsBox.innerHTML = html;
+    var modalOverlay = document.getElementById('eligModalOverlay');
+    var modalContent = document.getElementById('eligModalContent');
+    modalContent.innerHTML = headHtml + html;
+    modalOverlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+
+    /* Also keep a short inline note on the page below the form */
+    resultsBox.innerHTML = '<div class="elig-empty"><div class="ei">✅</div><p><b>' + studentName + '</b> ka result popup mein khul gaya hai. Popup band ho jaaye to yahan se bhi <a href="#" id="reopenEligModal" style="color:var(--cta);font-weight:700">result phir se dekhein</a>.</p></div>';
+    var reopenBtn = document.getElementById('reopenEligModal');
+    if (reopenBtn) {
+      reopenBtn.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        modalOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      });
+    }
 
     var wa = document.getElementById('waEligResult');
     if (wa) {
@@ -573,6 +641,24 @@ if (form) {
     }
   });
 }
+
+/* Modal close handlers */
+(function () {
+  var overlay = document.getElementById('eligModalOverlay');
+  var closeBtn = document.getElementById('eligModalClose');
+  if (!overlay) return;
+  function closeModal() {
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) closeModal();
+  });
+})();
 </script>
 </body>
 </html>
