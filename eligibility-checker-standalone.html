@@ -113,6 +113,13 @@ nav.menu details .drop-menu a:hover{background:#f3f6fc;color:var(--cta)}
 .disc-box{background:#fff8ec;border:1.5px solid var(--gold);border-radius:14px;padding:16px 20px;margin-top:22px;font-size:.82rem;color:var(--text);line-height:1.6}
 .disc-box b{color:var(--gold2)}
 
+/* Form validation */
+.fld input.invalid,.fld select.invalid{border-color:var(--cta2);background:#fff6f4}
+.fld-err{display:none;color:var(--cta2);font-size:.74rem;font-weight:700;margin-top:5px}
+.fld-err.show{display:block}
+.form-alert{display:none;background:#ffe9e5;border:1.5px solid var(--cta2);color:#a4271b;font-size:.82rem;font-weight:700;padding:11px 14px;border-radius:11px;margin-bottom:14px}
+.form-alert.show{display:block}
+
 /* Result Popup / Modal */
 .elig-modal-overlay{position:fixed;inset:0;background:rgba(8,30,20,.7);z-index:150;display:none;align-items:center;justify-content:center;padding:18px}
 .elig-modal-overlay.show{display:flex}
@@ -132,6 +139,15 @@ nav.menu details .drop-menu a:hover{background:#f3f6fc;color:var(--cta)}
 .em-body .elig-grid{margin-bottom:6px}
 .em-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .em-actions .btn{flex:1;min-width:180px}
+.em-actions .btn-ghost{background:#eef3fb;color:var(--navy);box-shadow:none}
+
+@media print{
+  body *{visibility:hidden}
+  .elig-modal-overlay,.elig-modal-overlay *{visibility:visible}
+  .elig-modal-overlay{position:absolute;inset:0;background:#fff;display:block;padding:0}
+  .elig-modal-box{max-height:none;overflow:visible;box-shadow:none;max-width:100%}
+  .em-close,.em-actions{display:none!important}
+}
 
 .ctaband{background:linear-gradient(135deg,var(--cta),var(--cta2));color:#fff}
 .ctaband .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
@@ -281,21 +297,25 @@ footer a:hover{color:var(--gold)}
     <div class="elig-form-card">
       <h3>🎯 Eligibility Form</h3>
       <div class="sub">Form bharein aur turant apna result dekhein.</div>
+      <div class="form-alert" id="formAlert">⚠️ Kripya sabhi fields sahi tarah bharein — neeche laal mark ki gayi fields check karein.</div>
       <form id="eligForm" novalidate>
         <div class="fld">
-          <label for="sname">👦 Student ka naam</label>
-          <input type="text" id="sname" name="sname" placeholder="Student ka poora naam" required />
+          <label for="sname">👦 Student ka naam *</label>
+          <input type="text" id="sname" name="sname" placeholder="Student ka poora naam" required minlength="2" />
+          <div class="fld-err" id="err-sname">Kripya student ka poora naam likhein (kam se kam 2 letters).</div>
         </div>
         <div class="fld">
-          <label for="sdob">🎂 Date of Birth</label>
+          <label for="sdob">🎂 Date of Birth *</label>
           <input type="date" id="sdob" name="sdob" required />
+          <div class="fld-err" id="err-sdob">Kripya valid Date of Birth chunein (future date nahi ho sakti).</div>
         </div>
         <div class="fld">
-          <label for="smobile">📱 Mobile Number</label>
-          <input type="tel" id="smobile" name="smobile" placeholder="10 digit mobile number" pattern="[0-9]{10}" required />
+          <label for="smobile">📱 Mobile Number *</label>
+          <input type="tel" id="smobile" name="smobile" placeholder="10 digit mobile number" pattern="[6-9][0-9]{9}" maxlength="10" inputmode="numeric" required />
+          <div class="fld-err" id="err-smobile">Kripya valid 10-digit mobile number likhein (jaise 98XXXXXXXX).</div>
         </div>
         <div class="fld">
-          <label for="sclass">📚 Currently Padh Raha Hai (Class)</label>
+          <label for="sclass">📚 Currently Padh Raha Hai (Class) *</label>
           <select id="sclass" name="sclass" required>
             <option value="">Class chunein</option>
             <option value="Nursery">Nursery</option>
@@ -311,11 +331,12 @@ footer a:hover{color:var(--gold)}
             <option value="8">Class 8</option>
             <option value="9">Class 9</option>
           </select>
+          <div class="fld-err" id="err-sclass">Kripya student ki current class chunein.</div>
         </div>
         <div class="fld">
           <label for="sgender">⚧ Gender</label>
           <select id="sgender" name="sgender">
-            <option value="Any">Boy</option>
+            <option value="Boy">Boy</option>
             <option value="Girl">Girl</option>
           </select>
         </div>
@@ -331,7 +352,7 @@ footer a:hover{color:var(--gold)}
           </select>
         </div>
         <button type="submit" class="btn btn-cta btn-block btn-lg">✅ Check Eligibility Now</button>
-        <p class="elig-note-sm">🔒 Aapki jaankari sirf eligibility check karne ke liye use hoti hai — kahin save nahi hoti. Result ke baad chahe to hum WhatsApp par bhi guidance de sakte hain.</p>
+        <p class="elig-note-sm">🔒 Aapki jaankari sirf eligibility check karne ke liye use hoti hai. Result ke baad hum aapko WhatsApp/Call par bhi guidance de sakte hain.</p>
       </form>
     </div>
 
@@ -349,7 +370,7 @@ footer a:hover{color:var(--gold)}
 <section class="ctaband" style="padding:36px 0">
   <div class="wrap">
     <div><h2>Result Mila? Ab Free Counselling Book Karein</h2><p>Hamari expert team aapke bacche ke liye best course choose karne mein madad karegi.</p></div>
-    <a href="#" class="btn btn-lg" id="waEligResult"><svg class="wa-icon"><use href="#waIcon"/></svg> WhatsApp Karein</a>
+    <a href="https://wa.me/918859425252?text=Namaste!%20Mujhe%20eligibility%20checker%20ke%20result%20ke%20baare%20mein%20free%20counselling%20chahiye." target="_blank" rel="noopener" class="btn btn-lg" id="waPageCta"><svg class="wa-icon"><use href="#waIcon"/></svg> WhatsApp Karein</a>
   </div>
 </section>
 
@@ -403,9 +424,9 @@ footer a:hover{color:var(--gold)}
   <a href="index.html#enroll" class="enq">🎯 Enquiry</a>
 </div>
 
-<div class="elig-modal-overlay" id="eligModalOverlay">
+<div class="elig-modal-overlay" id="eligModalOverlay" role="dialog" aria-modal="true" aria-labelledby="eligModalHeading">
   <div class="elig-modal-box" id="eligModalBox">
-    <button class="em-close" id="eligModalClose" aria-label="Close">✕</button>
+    <button class="em-close" id="eligModalClose" aria-label="Close popup">✕</button>
     <div id="eligModalContent"></div>
   </div>
 </div>
@@ -531,13 +552,91 @@ function statusFor(entry, age, currentClassNum) {
   return "info";
 }
 
+/* ---------------- Validation helpers ---------------- */
+function showFieldError(inputEl, errEl, show) {
+  if (!inputEl || !errEl) return;
+  inputEl.classList.toggle('invalid', !!show);
+  errEl.classList.toggle('show', !!show);
+}
+
+function validateForm() {
+  var ok = true;
+  var nameEl = document.getElementById('sname');
+  var dobEl = document.getElementById('sdob');
+  var mobileEl = document.getElementById('smobile');
+  var classEl = document.getElementById('sclass');
+
+  var nameVal = nameEl.value.trim();
+  var nameOk = nameVal.length >= 2 && /[A-Za-zअ-ह]/.test(nameVal);
+  showFieldError(nameEl, document.getElementById('err-sname'), !nameOk);
+  if (!nameOk) ok = false;
+
+  var dobVal = dobEl.value;
+  var dobDate = dobVal ? new Date(dobVal) : null;
+  var dobOk = !!dobVal && !isNaN(dobDate.getTime()) && dobDate.getTime() < Date.now();
+  showFieldError(dobEl, document.getElementById('err-sdob'), !dobOk);
+  if (!dobOk) ok = false;
+
+  var mobileVal = mobileEl.value.trim();
+  var mobileOk = /^[6-9][0-9]{9}$/.test(mobileVal);
+  showFieldError(mobileEl, document.getElementById('err-smobile'), !mobileOk);
+  if (!mobileOk) ok = false;
+
+  var classVal = classEl.value;
+  var classOk = !!classVal;
+  showFieldError(classEl, document.getElementById('err-sclass'), !classOk);
+  if (!classOk) ok = false;
+
+  return ok;
+}
+
+/* Live-clear error state as user types/fixes a field */
+['sname', 'sdob', 'smobile', 'sclass'].forEach(function (id) {
+  var el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('input', function () { el.classList.remove('invalid'); var e = document.getElementById('err-' + id); if (e) e.classList.remove('show'); });
+    el.addEventListener('change', function () { el.classList.remove('invalid'); var e = document.getElementById('err-' + id); if (e) e.classList.remove('show'); });
+  }
+});
+
+/* ---------------- Lightweight local lead log (no backend available) ----------------
+   NOTE: This tool is fully front-end/static (no server/database connected).
+   To avoid silently losing leads, every submission is saved into the browser's
+   localStorage under key "lbk_eligibility_leads" AND the mobile number is now
+   included in the WhatsApp message so the team receives it directly on WhatsApp.
+   For real lead-capture at scale, connect this form to Google Sheets / a form
+   backend (e.g. Google Forms API, Sheet.best, or your own server) later. */
+function saveLeadLocally(lead) {
+  try {
+    var key = 'lbk_eligibility_leads';
+    var existing = JSON.parse(localStorage.getItem(key) || '[]');
+    existing.push(lead);
+    localStorage.setItem(key, JSON.stringify(existing));
+  } catch (err) { /* localStorage unavailable — fail silently, do not break the form */ }
+}
+
+var lastSubmittedLead = null;
+
 if (form) {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+
+    var formAlert = document.getElementById('formAlert');
+    var isValid = validateForm();
+    if (!isValid) {
+      formAlert.classList.add('show');
+      var firstInvalid = form.querySelector('.invalid');
+      if (firstInvalid) firstInvalid.focus();
+      return;
+    }
+    formAlert.classList.remove('show');
+
     var fd = new FormData(form);
     var name = (fd.get('sname') || '').toString().trim();
     var dob = fd.get('sdob');
+    var mobile = (fd.get('smobile') || '').toString().trim();
     var currentClass = fd.get('sclass');
+    var gender = fd.get('sgender') || 'Boy';
     var category = fd.get('scategory') || 'General';
 
     var age = calcAge(dob);
@@ -557,8 +656,15 @@ if (form) {
           catNote = "As OBC (Non-Creamy Layer), 27% reservation applies in several of these courses (subject to certificate submission).";
         } else if (category === "Defence/Ex-Servicemen Ward") {
           catNote = "As a Defence/Ex-Servicemen ward, you get priority quota in Sainik School, RMS and Kendriya Vidyalaya.";
+        } else if (category === "Divyang") {
+          catNote = "As Divyang (PwD), reserved quota / relaxed criteria applies as per Govt. norms in Navodaya, KV, Sainik School, RMS and other courses.";
         }
-        matchedCards.push({ course: course, entry: entry, status: status, catNote: catNote });
+        if (gender === "Girl") {
+          if (course.id === "navodaya") catNote += (catNote ? " " : "") + "Minimum 1/3 seats reserved for girls.";
+          else if (course.id === "sainik") catNote += (catNote ? " " : "") + "Minimum 10% seats reserved for girls.";
+          else if (course.id === "rimc") catNote += (catNote ? " " : "") + "RIMC is open to both boys and girls.";
+        }
+        matchedCards.push({ course: course, entry: entry, status: status, catNote: catNote.trim() });
       });
     });
 
@@ -577,7 +683,7 @@ if (form) {
 
     var headHtml = '';
     headHtml += '<div class="em-head">';
-    headHtml += '<span class="em-tag">✅ Eligibility Result</span>';
+    headHtml += '<span class="em-tag" id="eligModalHeading">✅ Eligibility Result</span>';
     if (eligibleNames.length > 0) {
       headHtml += '<h3><b>' + studentName + '</b> is eligible for ' + eligibleNames.length + ' course' + (eligibleNames.length === 1 ? '' : 's') + ' right now! 🎉</h3>';
       headHtml += '<div class="em-chips">';
@@ -612,7 +718,8 @@ if (form) {
     html += '<div class="disc-box">⚠️ <b>Disclaimer:</b> Ye result sirf ek quick guide hai, based on generally published rules. Exact age cut-off dates, reservation percentages aur seat availability har admission cycle mein change hoti hain. Kripya final confirmation ke liye humein call/WhatsApp karein ya official notification dekhein — hamari free counselling team aapko exact eligibility batayegi.</div>';
     html += '<div class="em-actions">';
     html += '<a href="index.html#enroll" class="btn btn-cta">🎯 Book Free Counselling</a>';
-    html += '<a href="#" class="btn btn-cta" id="waEligResult" style="background:linear-gradient(135deg,#25d366,#1ea952)"><svg class="wa-icon"><use href="#waIcon"/></svg> WhatsApp Result</a>';
+    html += '<a href="#" class="btn btn-cta" id="waEligResultModal" style="background:linear-gradient(135deg,#25d366,#1ea952)"><svg class="wa-icon"><use href="#waIcon"/></svg> WhatsApp Result</a>';
+    html += '<button type="button" class="btn btn-ghost" id="printEligResult">🖨️ Print / Save PDF</button>';
     html += '</div>';
     html += '</div>';
 
@@ -622,6 +729,44 @@ if (form) {
     modalOverlay.classList.add('show');
     document.body.style.overflow = 'hidden';
 
+    /* Focus trap: move focus into modal close button for accessibility */
+    var closeBtnEl = document.getElementById('eligModalClose');
+    if (closeBtnEl) closeBtnEl.focus();
+
+    /* Build a full WhatsApp message including mobile + eligible course summary */
+    var eligSummaryText = eligibleNames.length > 0 ? eligibleNames.join(", ") : "abhi koi course 'eligible now' nahi (aage ke liye guidance chahiye)";
+    var msg = "Namaste! Maine LBK Eligibility Checker use kiya.\n" +
+      "Student: " + studentName + "\n" +
+      "DOB: " + dob + " | Class: " + currentClass + " | Gender: " + gender + " | Category: " + category + "\n" +
+      "Mobile: " + mobile + "\n" +
+      "Eligible for: " + eligSummaryText + "\n" +
+      "Please guide us further.";
+    var waHref = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
+
+    var waModalBtn = document.getElementById('waEligResultModal');
+    if (waModalBtn) {
+      waModalBtn.href = waHref;
+      waModalBtn.target = "_blank";
+      waModalBtn.rel = "noopener";
+    }
+
+    var printBtn = document.getElementById('printEligResult');
+    if (printBtn) {
+      printBtn.addEventListener('click', function () { window.print(); });
+    }
+
+    /* Save lead locally (no backend connected yet) + keep in memory for reopen */
+    lastSubmittedLead = { name: name, dob: dob, mobile: mobile, currentClass: currentClass, gender: gender, category: category, eligibleCourses: eligibleNames, submittedAt: new Date().toISOString() };
+    saveLeadLocally(lastSubmittedLead);
+
+    /* Basic conversion-tracking hook (fires only if GA/Meta Pixel is added to the page later) */
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'eligibility_check_submitted', { eligible_count: eligibleNames.length });
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('trackCustom', 'EligibilityCheckSubmitted', { eligible_count: eligibleNames.length });
+    }
+
     /* Also keep a short inline note on the page below the form */
     resultsBox.innerHTML = '<div class="elig-empty"><div class="ei">✅</div><p><b>' + studentName + '</b> ka result popup mein khul gaya hai. Popup band ho jaaye to yahan se bhi <a href="#" id="reopenEligModal" style="color:var(--cta);font-weight:700">result phir se dekhein</a>.</p></div>';
     var reopenBtn = document.getElementById('reopenEligModal');
@@ -630,33 +775,43 @@ if (form) {
         ev.preventDefault();
         modalOverlay.classList.add('show');
         document.body.style.overflow = 'hidden';
+        if (closeBtnEl) closeBtnEl.focus();
       });
-    }
-
-    var wa = document.getElementById('waEligResult');
-    if (wa) {
-      var msg = "Namaste! Maine Eligibility Checker use kiya — " + (name || "mera bacche") + " (DOB: " + dob + ", Class: " + currentClass + ", Category: " + category + ") ke liye kaunse courses eligible hain, please guide karein.";
-      wa.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);
-      wa.target = "_blank"; wa.rel = "noopener";
     }
   });
 }
 
-/* Modal close handlers */
+/* Modal close handlers (click outside, close button, Escape key) */
 (function () {
   var overlay = document.getElementById('eligModalOverlay');
   var closeBtn = document.getElementById('eligModalClose');
   if (!overlay) return;
+  var lastFocusedBeforeModal = null;
+
   function closeModal() {
     overlay.classList.remove('show');
     document.body.style.overflow = '';
+    if (lastFocusedBeforeModal) lastFocusedBeforeModal.focus();
   }
+  document.addEventListener('focusin', function (e) {
+    if (!overlay.classList.contains('show') && e.target !== overlay) {
+      lastFocusedBeforeModal = document.activeElement;
+    }
+  });
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
   overlay.addEventListener('click', function (e) {
     if (e.target === overlay) closeModal();
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && overlay.classList.contains('show')) closeModal();
+    /* simple focus trap while modal is open */
+    if (e.key === 'Tab' && overlay.classList.contains('show')) {
+      var focusables = overlay.querySelectorAll('button, a[href], input, select, textarea');
+      if (!focusables.length) return;
+      var first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 })();
 </script>
