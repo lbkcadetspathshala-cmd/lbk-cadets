@@ -133,8 +133,10 @@ nav.menu details .drop-menu a:hover{background:#f3f6fc;color:var(--cta)}
 .em-head h3{position:relative;z-index:1;font-size:clamp(1.15rem,3vw,1.55rem);font-weight:800;line-height:1.35}
 .em-head h3 b{color:var(--gold)}
 .em-chips{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.em-chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.8rem;font-weight:700;padding:6px 13px;border-radius:50px}
-.em-chip.none{background:rgba(255,255,255,.1)}
+.em-chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.8rem;font-weight:700;padding:6px 13px;border-radius:50px;display:inline-block;cursor:pointer;transition:background .2s,transform .2s}
+.em-chip:hover{background:rgba(255,255,255,.3);transform:translateY(-2px)}
+.em-chip.none{background:rgba(255,255,255,.1);cursor:default}
+.em-chip.none:hover{background:rgba(255,255,255,.1);transform:none}
 .em-body{padding:24px 26px 28px}
 .em-body .elig-grid{margin-bottom:6px}
 .em-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
@@ -464,63 +466,63 @@ var COURSES = [
     id: "navodaya", name: "Navodaya Vidyalaya (JNVST / LEST)", icon: "🏫",
     link: "courses/navodaya-vidyalaya-jnvst.html",
     entries: [
-      { label: "Class VI (JNVST)", fromClass: 5, minAge: 9, maxAge: 13, note: "Rural/govt-school candidates get priority. Min. 75% rural quota, min. 1/3 girls, 27% OBC, SC/ST as per district population, Divyang as per norms." },
-      { label: "Class IX (LEST)", fromClass: 8, minAge: 13, maxAge: 15, note: "Lateral entry — subject to seat vacancy in the district JNV." }
+      { label: "Class VI (JNVST)", fromClass: 5, minAge: 9, maxAge: 13, note: "Rural/govt-school candidates get priority. Min. 75% rural quota, min. 1/3 girls, 27% OBC, SC/ST as per district population, Divyang as per norms.", pwdNote: "Divyang (PwD) candidates get seat reservation as per Govt. norms, with relaxed criteria in some cases. Exact percentage/relaxation is announced every year in the NVS/JNVST notification — please confirm before applying." },
+      { label: "Class IX (LEST)", fromClass: 8, minAge: 13, maxAge: 15, note: "Lateral entry — subject to seat vacancy in the district JNV.", pwdNote: "Divyang (PwD) reservation applies as per NVS norms for lateral entry as well, subject to seat vacancy — confirm exact quota in the current year's LEST notification." }
     ]
   },
   {
     id: "sainik", name: "Sainik School (AISSEE)", icon: "🎖️",
     link: "courses/sainik-school-aissee.html",
     entries: [
-      { label: "Class VI (AISSEE)", fromClass: 5, minAge: 10, maxAge: 12, note: "Reservation: SC 15%, ST 7.5%, Defence/Ex-servicemen wards 25%, min. 10% seats for girls, Home-State quota ~67%." },
-      { label: "Class IX (AISSEE)", fromClass: 8, minAge: 13, maxAge: 15, note: "Girls' admission to Class IX subject to seat availability. Same category quotas as Class VI apply." }
+      { label: "Class VI (AISSEE)", fromClass: 5, minAge: 10, maxAge: 12, note: "Reservation: SC 15%, ST 7.5%, Defence/Ex-servicemen wards 25%, min. 10% seats for girls, Home-State quota ~67%.", pwdNote: "⚠️ Sainik Schools require compulsory medical & physical fitness standards for cadet/military training — no separate PwD seat reservation is currently published for AISSEE. Some benchmark-disability relaxation may exist under the RPwD Act, 2016 — please confirm directly with the latest AISSEE notification before assuming eligibility." },
+      { label: "Class IX (AISSEE)", fromClass: 8, minAge: 13, maxAge: 15, note: "Girls' admission to Class IX subject to seat availability. Same category quotas as Class VI apply.", pwdNote: "⚠️ Same as Class VI — strict medical/physical fitness applies; no specific PwD quota currently published. Please confirm with the latest AISSEE notification." }
     ]
   },
   {
     id: "rms", name: "Rashtriya Military School (RMS)", icon: "⚔️",
     link: "courses/rashtriya-military-school-rms.html",
     entries: [
-      { label: "Class VI (CET)", fromClass: 5, minAge: 10, maxAge: 12, note: "Selection via Common Entrance Test (English, Maths, GK, Intelligence) + physical fitness + medical. Wards of Defence personnel get priority quota." },
-      { label: "Class IX (CET)", fromClass: 8, minAge: 13, maxAge: 15, note: "Same CET pattern with higher-level syllabus; physical & medical fitness compulsory." }
+      { label: "Class VI (CET)", fromClass: 5, minAge: 10, maxAge: 12, note: "Selection via Common Entrance Test (English, Maths, GK, Intelligence) + physical fitness + medical. Wards of Defence personnel get priority quota.", pwdNote: "⚠️ RMS admission requires compulsory physical fitness & medical standards for military training — no dedicated PwD seat reservation is currently published. Please confirm with the latest RMS CET notification before applying." },
+      { label: "Class IX (CET)", fromClass: 8, minAge: 13, maxAge: 15, note: "Same CET pattern with higher-level syllabus; physical & medical fitness compulsory.", pwdNote: "⚠️ Same as Class VI — physical/medical fitness compulsory; no dedicated PwD quota currently published. Please confirm with the latest RMS notification." }
     ]
   },
   {
     id: "rimc", name: "Rashtriya Indian Military College (RIMC)", icon: "🎯",
     link: "courses/rimc.html",
     entries: [
-      { label: "Class VIII Entry", fromClass: 7, minAge: 11.5, maxAge: 13, note: "Open to both boys & girls. Written test (English, Maths, GK) + Psychological test + Personal Interview + medical fitness. Limited state-wise quota." }
+      { label: "Class VIII Entry", fromClass: 7, minAge: 11.5, maxAge: 13, note: "Open to both boys & girls. Written test (English, Maths, GK) + Psychological test + Personal Interview + medical fitness. Limited state-wise quota.", pwdNote: "⚠️ RIMC requires compulsory medical & physical fitness standards for military training — no dedicated PwD seat reservation is currently published. Please confirm directly with the current year's RIMC notification." }
     ]
   },
   {
     id: "kv", name: "Kendriya Vidyalaya (KV)", icon: "🎓",
     link: "courses/kendriya-vidyalaya-kv.html",
     entries: [
-      { label: "Class I (Lottery)", fromClass: 0, minAge: 6, maxAge: 8, note: "Admission via computerised draw of lots (no entrance test). Priority: Defence/Ex-servicemen wards → KVS employee wards → Govt. employee wards → others." },
-      { label: "Class II – IX (Vacancy)", fromClass: 1, minAge: 6, maxAge: 15, note: "Admission subject to seat vacancy in the relevant class. RTE 25%, SC 15%, ST 7.5%, OBC-NCL 27%, CWSN 3% reservation applies." }
+      { label: "Class I (Lottery)", fromClass: 0, minAge: 6, maxAge: 8, note: "Admission via computerised draw of lots (no entrance test). Priority: Defence/Ex-servicemen wards → KVS employee wards → Govt. employee wards → others.", pwdNote: "As per KVS norms, 3% horizontal reservation is provided for CWSN (Children With Special Needs / PwD) across all categories." },
+      { label: "Class II – IX (Vacancy)", fromClass: 1, minAge: 6, maxAge: 15, note: "Admission subject to seat vacancy in the relevant class. RTE 25%, SC 15%, ST 7.5%, OBC-NCL 27%, CWSN 3% reservation applies.", pwdNote: "As per KVS norms, 3% horizontal reservation applies for CWSN (Children With Special Needs / PwD), subject to seat vacancy in the relevant class." }
     ]
   },
   {
     id: "amu", name: "AMU Schools", icon: "🕌",
     link: "courses/amu-schools.html",
     entries: [
-      { label: "Class I (Draw of Lots)", fromClass: 0, minAge: 6, maxAge: 8, note: "Admission through draw of lots, no written test." },
-      { label: "Class VI (Entrance Test)", fromClass: 5, minAge: 10, maxAge: 12, note: "Written entrance test — Maths, English, GK, Reasoning." },
-      { label: "Class IX (Entrance Test)", fromClass: 8, minAge: 13, maxAge: 15, note: "Written entrance test conducted by AMU Controller of Examinations." }
+      { label: "Class I (Draw of Lots)", fromClass: 0, minAge: 6, maxAge: 8, note: "Admission through draw of lots, no written test.", pwdNote: "As a Central University-run institution, AMU Schools generally follow RPwD Act, 2016 norms for PwD reservation — exact percentage should be confirmed in AMU's current admission notice." },
+      { label: "Class VI (Entrance Test)", fromClass: 5, minAge: 10, maxAge: 12, note: "Written entrance test — Maths, English, GK, Reasoning.", pwdNote: "PwD reservation is generally available as per RPwD Act, 2016 norms applicable to AMU (Central University) — please confirm exact quota in the current admission notice." },
+      { label: "Class IX (Entrance Test)", fromClass: 8, minAge: 13, maxAge: 15, note: "Written entrance test conducted by AMU Controller of Examinations.", pwdNote: "PwD reservation is generally available as per RPwD Act, 2016 norms applicable to AMU (Central University) — please confirm exact quota in the current admission notice." }
     ]
   },
   {
     id: "jmi", name: "Jamia Millia Islamia (JMI) School", icon: "📖",
     link: "courses/jmi-school.html",
     entries: [
-      { label: "Class VI", fromClass: 5, minAge: 10, maxAge: 12, note: "Admission via test/lottery at Jamia Senior Secondary School, Girls SSS or Syed Abid Husain SSS. Exact age cut-off announced yearly in the Jamia School Prospectus." },
-      { label: "Class IX", fromClass: 8, minAge: 13, maxAge: 15, note: "Same schools as Class VI; check current year's prospectus for exact process." }
+      { label: "Class VI", fromClass: 5, minAge: 10, maxAge: 12, note: "Admission via test/lottery at Jamia Senior Secondary School, Girls SSS or Syed Abid Husain SSS. Exact age cut-off announced yearly in the Jamia School Prospectus.", pwdNote: "As a Central University-run institution, JMI Schools generally follow RPwD Act, 2016 norms for PwD reservation — exact percentage should be confirmed in the current year's Jamia School Prospectus." },
+      { label: "Class IX", fromClass: 8, minAge: 13, maxAge: 15, note: "Same schools as Class VI; check current year's prospectus for exact process.", pwdNote: "Same as Class VI — please confirm exact PwD quota in the current year's Jamia School Prospectus." }
     ]
   },
   {
     id: "chs", name: "Central Hindu School (CHS - BHU)", icon: "🏛️",
     link: "courses/chs-bhu.html",
     entries: [
-      { label: "Class IX (SET)", fromClass: 8, minAge: 13, maxAge: 15, note: "School Entrance Test (SET) — qualifying marks 33% for General/OBC, 25% for SC/ST & Divyang (Orthopedically Handicapped)." }
+      { label: "Class IX (SET)", fromClass: 8, minAge: 13, maxAge: 15, note: "School Entrance Test (SET) — qualifying marks 33% for General/OBC, 25% for SC/ST & Divyang (Orthopedically Handicapped).", pwdNote: "Divyang (Orthopedically Handicapped/PwD) candidates get a relaxed qualifying mark of 25% (vs 33% for General/OBC) as per BHU Central Hindu School norms." }
     ]
   }
 ];
@@ -657,7 +659,12 @@ if (form) {
         } else if (category === "Defence/Ex-Servicemen Ward") {
           catNote = "As a Defence/Ex-Servicemen ward, you get priority quota in Sainik School, RMS and Kendriya Vidyalaya.";
         } else if (category === "Divyang") {
-          catNote = "As Divyang (PwD), reserved quota / relaxed criteria applies as per Govt. norms in Navodaya, KV, Sainik School, RMS and other courses.";
+          /* Use the accurate, course-specific PwD note instead of one generic line —
+             because PwD/Divyang rules are NOT the same across all 8 courses
+             (e.g. Sainik School/RMS/RIMC require compulsory physical fitness for
+             military training and do not currently publish a PwD seat quota,
+             while Navodaya/KV/AMU/JMI/CHS-BHU do provide PwD reservation/relaxation). */
+          catNote = entry.pwdNote || "As Divyang (PwD), please confirm exact reservation/relaxation applicable to this course with the official notification.";
         }
         if (gender === "Girl") {
           if (course.id === "navodaya") catNote += (catNote ? " " : "") + "Minimum 1/3 seats reserved for girls.";
@@ -673,21 +680,27 @@ if (form) {
 
     var studentName = name || 'Aapka bacha';
 
-    /* Unique eligible-now course names (dedupe by course, not per entry) */
-    var eligibleNames = [];
+    /* Unique eligible-now courses (dedupe by course, not per entry) — keep the
+       full course object (not just the name) so we can link to it below */
+    var eligibleCourseObjs = [];
     matchedCards.forEach(function (m) {
-      if (m.status === 'now' && eligibleNames.indexOf(m.course.name) === -1) {
-        eligibleNames.push(m.course.name);
+      if (m.status === 'now' && eligibleCourseObjs.indexOf(m.course) === -1) {
+        eligibleCourseObjs.push(m.course);
       }
     });
+    var eligibleNames = eligibleCourseObjs.map(function (c) { return c.name; });
 
     var headHtml = '';
     headHtml += '<div class="em-head">';
     headHtml += '<span class="em-tag" id="eligModalHeading">✅ Eligibility Result</span>';
-    if (eligibleNames.length > 0) {
-      headHtml += '<h3><b>' + studentName + '</b> is eligible for ' + eligibleNames.length + ' course' + (eligibleNames.length === 1 ? '' : 's') + ' right now! 🎉</h3>';
+    if (eligibleCourseObjs.length > 0) {
+      headHtml += '<h3><b>' + studentName + '</b> is eligible for ' + eligibleCourseObjs.length + ' course' + (eligibleCourseObjs.length === 1 ? '' : 's') + ' right now! 🎉</h3>';
       headHtml += '<div class="em-chips">';
-      eligibleNames.forEach(function (n) { headHtml += '<span class="em-chip">✅ ' + n + '</span>'; });
+      /* FIX: chips are now real links to the course detail page (previously
+         these were plain <span> tags with no href, so clicking did nothing) */
+      eligibleCourseObjs.forEach(function (c) {
+        headHtml += '<a href="' + c.link + '" class="em-chip" title="View ' + c.name + ' details">✅ ' + c.name + ' →</a>';
+      });
       headHtml += '</div>';
     } else {
       headHtml += '<h3><b>' + studentName + '</b> abhi kisi course ke liye "eligible now" nahi hai — lekin niche detail mein dekhein kaunse courses aage eligible ho sakte hain.</h3>';
