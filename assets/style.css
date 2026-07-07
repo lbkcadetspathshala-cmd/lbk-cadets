@@ -305,6 +305,53 @@ nav.menu details .drop-menu a:hover{background:#f3f6fc;color:var(--cta)}
 .chip-row{display:flex;flex-wrap:wrap;gap:10px}
 .chip-row span{background:#eef3fb;color:var(--navy);font-weight:600;font-size:.85rem;padding:8px 16px;border-radius:50px;border:1px solid var(--line)}
 
+/* Eligibility Checker */
+.elig-hero{background:linear-gradient(135deg,#0e3320,#154430 55%,#1d5a3f);color:#fff;padding:46px 0 40px;position:relative;overflow:hidden}
+.elig-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(203,162,76,.22),transparent 60%)}
+.elig-hero .wrap{position:relative;z-index:2;text-align:center;max-width:720px}
+.elig-hero .tagline{color:var(--gold);font-weight:800;letter-spacing:1.4px;text-transform:uppercase;font-size:.8rem;margin-bottom:10px;display:inline-block}
+.elig-hero h1{font-size:clamp(1.8rem,4.2vw,2.6rem);font-weight:800;margin-bottom:12px}
+.elig-hero p{color:#d6e4da;font-size:1.02rem}
+
+.elig-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:flex-start}
+.elig-form-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);padding:26px 24px;position:sticky;top:118px}
+.elig-form-card h3{color:var(--navy);font-size:1.15rem;margin-bottom:4px}
+.elig-form-card .sub{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+.elig-form-card .fld label{display:block;font-size:.78rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+.elig-note-sm{font-size:.72rem;color:var(--muted);margin-top:10px;line-height:1.5}
+
+.elig-results{min-height:200px}
+.elig-empty{background:#fff;border:1.5px dashed var(--line);border-radius:18px;padding:44px 24px;text-align:center;color:var(--muted)}
+.elig-empty .ei{font-size:2.4rem;margin-bottom:10px}
+.elig-summary{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;padding:18px 22px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.elig-summary b{font-family:'Teko',sans-serif;font-size:1.8rem;color:var(--gold)}
+.elig-summary span{font-size:.85rem;color:#c3d3c8}
+.elig-summary .btn{flex-shrink:0}
+
+.elig-grid{display:grid;gap:14px}
+.elig-card{background:#fff;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow);padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+.elig-card .eic{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--navy2));display:grid;place-items:center;font-size:1.35rem;flex-shrink:0;border:2px solid var(--gold)}
+.elig-card .eb{flex:1;min-width:0}
+.elig-card h4{color:var(--navy);font-size:1.02rem;margin-bottom:4px}
+.elig-card .estatus{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:800;padding:4px 11px;border-radius:50px;margin-bottom:8px}
+.estatus.now{background:#e7f7ee;color:var(--green)}
+.estatus.later{background:#fff1e3;color:var(--cta)}
+.estatus.passed{background:#f3f4f6;color:#8a94a6}
+.estatus.info{background:#eef3fb;color:var(--navy)}
+.elig-card .emeta{font-size:.82rem;color:var(--muted);margin-bottom:8px;line-height:1.5}
+.elig-card .ecat-note{font-size:.78rem;color:var(--navy);background:#f6f1e2;border-left:3px solid var(--gold);padding:6px 10px;border-radius:6px;margin-bottom:8px}
+.elig-card .erow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.elig-card .erow a{font-size:.8rem;font-weight:700;color:var(--cta)}
+.elig-card.dim{opacity:.6}
+
+.disc-box{background:#fff8ec;border:1.5px solid var(--gold);border-radius:14px;padding:16px 20px;margin-top:22px;font-size:.82rem;color:var(--text);line-height:1.6}
+.disc-box b{color:var(--gold2)}
+
+@media(max-width:900px){
+  .elig-wrap{grid-template-columns:1fr}
+  .elig-form-card{position:static}
+}
+
 /* Contact Us section */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;margin-top:8px}
 .contact-info{display:flex;flex-direction:column;gap:16px}
